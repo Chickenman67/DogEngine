@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="../Sandbox/Sandbox.vcxproj" Id="5f2eeabd-0b18-4b19-bd3a-dfb60d893e5a" />
+  <Project Path="GodEngine.vcxproj" Id="6a12891e-17ae-404e-b4fa-b53db3b6d010" />
+</Solution>
