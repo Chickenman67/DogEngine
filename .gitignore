@@ -3,4 +3,6 @@
 .vs/
 bin/
 bin-int/
+
+#files
 GodEngine.vcxproj.user

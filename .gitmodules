@@ -1,0 +1,3 @@
+[submodule "GodEngine/vendor/spdlog"]
+	path = GodEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
