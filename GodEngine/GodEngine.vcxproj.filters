@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="GodEngine">
+      <UniqueIdentifier>{F5ADDF6B-6118-94E2-AA56-458816007237}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\GodEngine.h" />
+    <ClInclude Include="..\src\GodEngine\Application.h">
+      <Filter>GodEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GodEngine\Core.h">
+      <Filter>GodEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GodEngine\EntryPoint.h">
+      <Filter>GodEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GodEngine\Log.h">
+      <Filter>GodEngine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\GodEngine\Application.cpp">
+      <Filter>GodEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GodEngine\Log.cpp">
+      <Filter>GodEngine</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
