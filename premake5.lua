@@ -10,6 +10,11 @@ workspace "GodEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "GodEngine/vendor/GLFW/include"
+
+include "GodEngine/vendor/GLFW"
+
 project "GodEngine"
     location "GodEngine"
     kind "SharedLib"
@@ -30,7 +35,13 @@ project "GodEngine"
     includedirs
     {
         "src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links{
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:windows"

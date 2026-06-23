@@ -7,6 +7,12 @@
     <Filter Include="GodEngine\Events">
       <UniqueIdentifier>{397451DE-256D-7030-4E9F-55B53AF74F3C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GodEngine\Platform">
+      <UniqueIdentifier>{E96D9DD4-D551-5E2A-3EB2-587D2AB548AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GodEngine\Platform\Windows">
+      <UniqueIdentifier>{23F10AA9-0F01-B779-78BA-1B9864E9A512}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\GodEngine.h" />
@@ -34,6 +40,12 @@
     <ClInclude Include="..\src\GodEngine\Log.h">
       <Filter>GodEngine</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\GodEngine\Platform\Windows\WindowsWindow.h">
+      <Filter>GodEngine\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GodEngine\Window.h">
+      <Filter>GodEngine</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\gepch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="..\src\GodEngine\Log.cpp">
       <Filter>GodEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GodEngine\Platform\Windows\WindowsWindow.cpp">
+      <Filter>GodEngine\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\src\gepch.cpp" />
   </ItemGroup>
