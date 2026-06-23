@@ -4,6 +4,9 @@
     <Filter Include="GodEngine">
       <UniqueIdentifier>{F5ADDF6B-6118-94E2-AA56-458816007237}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GodEngine\Events">
+      <UniqueIdentifier>{397451DE-256D-7030-4E9F-55B53AF74F3C}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\GodEngine.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\EntryPoint.h">
       <Filter>GodEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GodEngine\Events\ApplicationEvent.h">
+      <Filter>GodEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GodEngine\Events\Event.h">
+      <Filter>GodEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GodEngine\Events\KeyEvent.h">
+      <Filter>GodEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GodEngine\Events\MouseEvent.h">
+      <Filter>GodEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\Log.h">
       <Filter>GodEngine</Filter>

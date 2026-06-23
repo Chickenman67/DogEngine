@@ -9,3 +9,5 @@
 #else
 	#error GodEngine is only on Windows
 #endif
+
+#define BIT(x) (1<<x)

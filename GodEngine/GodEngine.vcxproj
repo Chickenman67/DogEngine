@@ -159,6 +159,10 @@
     <ClInclude Include="..\src\GodEngine\Application.h" />
     <ClInclude Include="..\src\GodEngine\Core.h" />
     <ClInclude Include="..\src\GodEngine\EntryPoint.h" />
+    <ClInclude Include="..\src\GodEngine\Events\ApplicationEvent.h" />
+    <ClInclude Include="..\src\GodEngine\Events\Event.h" />
+    <ClInclude Include="..\src\GodEngine\Events\KeyEvent.h" />
+    <ClInclude Include="..\src\GodEngine\Events\MouseEvent.h" />
     <ClInclude Include="..\src\GodEngine\Log.h" />
   </ItemGroup>
   <ItemGroup>

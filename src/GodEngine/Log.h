@@ -2,6 +2,8 @@
 #include <memory>
 #include "Core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
+
 namespace GodEngine {
 	class GODENGINE_API Log
 	{
