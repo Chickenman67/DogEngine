@@ -2,8 +2,7 @@
 
 #include "GodEngine/Core.h"
 
-#include <string>
-#include <functional>
+
 
 
 namespace GodEngine {

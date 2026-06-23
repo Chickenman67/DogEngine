@@ -17,10 +17,12 @@ project "GodEngine"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
+    pchheader "gepch.h"
+    pchsource "src/gepch.cpp"
     files
     {
-        "src/GodEngine.h",
+        "src/**.h",
+        "src/**.cpp",
         "src/GodEngine/**.h",
         "src/GodEngine/**.cpp"
     }
