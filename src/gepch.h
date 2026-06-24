@@ -10,6 +10,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "GodEngine/Log.h"
+
 #ifdef GE_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
