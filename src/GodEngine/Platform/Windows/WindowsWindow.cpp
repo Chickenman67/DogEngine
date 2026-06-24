@@ -31,7 +31,7 @@ namespace GodEngine {
 
         if (!s_GLFWInitialized)
         {
-            // TODO: glfwTerminate on system shutdown
+            
             int success = glfwInit();
             GE_CORE_ASSERT(success, "Could not initialize GLFW!");
             glfwSetErrorCallback(GLFWErrorCallback);
@@ -40,6 +40,8 @@ namespace GodEngine {
 
         m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
         glfwMakeContextCurrent(m_Window);
+        int gladStatus = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+        GE_CORE_ASSERT(gladStatus, "Failed to initialize Glad!");
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
 

@@ -1,67 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="GodEngine">
-      <UniqueIdentifier>{F5ADDF6B-6118-94E2-AA56-458816007237}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GodEngine\Events">
-      <UniqueIdentifier>{397451DE-256D-7030-4E9F-55B53AF74F3C}</UniqueIdentifier>
+    <Filter Include="src\GodEngine">
+      <UniqueIdentifier>{CC0F9AAB-38D0-15E2-010B-5F5F6D8A5ABE}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GodEngine\Platform">
-      <UniqueIdentifier>{E96D9DD4-D551-5E2A-3EB2-587D2AB548AC}</UniqueIdentifier>
+    <Filter Include="src\GodEngine\Events">
+      <UniqueIdentifier>{307EBE45-1C0D-480F-C52B-5C0AB19958B5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GodEngine\Platform\Windows">
-      <UniqueIdentifier>{23F10AA9-0F01-B779-78BA-1B9864E9A512}</UniqueIdentifier>
+    <Filter Include="src\GodEngine\Platform">
+      <UniqueIdentifier>{A0D174CB-8CCB-9D1D-7538-342E61D1038A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GodEngine\Platform\Windows">
+      <UniqueIdentifier>{DA1B8AEB-C641-5452-AF87-D91D9B4C791E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\glad">
+      <UniqueIdentifier>{9A8E79C1-0644-F2B6-8F38-EC8DFBECE8BA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\glad\src">
+      <UniqueIdentifier>{B1098FEA-1D95-FCAE-26A6-7FA392B058AF}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\GodEngine.h" />
+    <ClInclude Include="..\src\GodEngine.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\GodEngine\Application.h">
-      <Filter>GodEngine</Filter>
+      <Filter>src\GodEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\Core.h">
-      <Filter>GodEngine</Filter>
+      <Filter>src\GodEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\EntryPoint.h">
-      <Filter>GodEngine</Filter>
+      <Filter>src\GodEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\Events\ApplicationEvent.h">
-      <Filter>GodEngine\Events</Filter>
+      <Filter>src\GodEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\Events\Event.h">
-      <Filter>GodEngine\Events</Filter>
+      <Filter>src\GodEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\Events\KeyEvent.h">
-      <Filter>GodEngine\Events</Filter>
+      <Filter>src\GodEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\Events\MouseEvent.h">
-      <Filter>GodEngine\Events</Filter>
+      <Filter>src\GodEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GodEngine\Layer.h">
+      <Filter>src\GodEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GodEngine\LayerStack.h">
+      <Filter>src\GodEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\Log.h">
-      <Filter>GodEngine</Filter>
+      <Filter>src\GodEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\Platform\Windows\WindowsWindow.h">
-      <Filter>GodEngine\Platform\Windows</Filter>
+      <Filter>src\GodEngine\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\Window.h">
-      <Filter>GodEngine</Filter>
+      <Filter>src\GodEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\gepch.h" />
-    <ClInclude Include="..\src\GodEngine\Layer.h" />
-    <ClInclude Include="..\src\GodEngine\LayerStack.h" />
+    <ClInclude Include="..\src\gepch.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\GodEngine\Application.cpp">
-      <Filter>GodEngine</Filter>
+      <Filter>src\GodEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GodEngine\Layer.cpp">
+      <Filter>src\GodEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GodEngine\LayerStack.cpp">
+      <Filter>src\GodEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\src\GodEngine\Log.cpp">
-      <Filter>GodEngine</Filter>
+      <Filter>src\GodEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\src\GodEngine\Platform\Windows\WindowsWindow.cpp">
-      <Filter>GodEngine\Platform\Windows</Filter>
+      <Filter>src\GodEngine\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\gepch.cpp" />
-    <ClCompile Include="..\src\GodEngine\Layer.cpp" />
-    <ClCompile Include="..\src\GodEngine\LayerStack.cpp" />
+    <ClCompile Include="..\src\gepch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\glad\src\glad.c">
+      <Filter>vendor\glad\src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

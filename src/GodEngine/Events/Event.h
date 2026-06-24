@@ -1,6 +1,9 @@
 #pragma once
-#include "gepch.h"
 #include "GodEngine/Core.h"
+#include <string>
+#include <sstream>
+#include <functional>
+#include <iostream>
 
 
 
@@ -44,6 +47,8 @@ namespace GodEngine {
 		inline bool IsInCategory(EventCategory category) const {
 			return GetCategoryFlags() & category;
 		}
+
+		inline bool IsHandled() const { return m_Handled; }
 	protected:
 		bool m_Handled = false;
 	};

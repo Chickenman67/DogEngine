@@ -12,6 +12,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "GodEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "GodEngine/vendor/glad/include"
 
 include "GodEngine/vendor/GLFW"
 
@@ -29,14 +30,16 @@ project "GodEngine"
         "src/**.h",
         "src/**.cpp",
         "src/GodEngine/**.h",
-        "src/GodEngine/**.cpp"
+        "src/GodEngine/**.cpp",
+        "%{prj.name}/vendor/glad/src/glad.c"
     }
 
     includedirs
     {
         "src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links{
@@ -61,6 +64,9 @@ project "GodEngine"
         {
             ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
         }
+
+    filter "files:**/glad.c"
+        enablepch "Off"
 
     filter "configurations:Debug"
         defines "GE_DEBUG"
