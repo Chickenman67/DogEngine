@@ -47,6 +47,8 @@
       <Filter>GodEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\src\gepch.h" />
+    <ClInclude Include="..\src\GodEngine\Layer.h" />
+    <ClInclude Include="..\src\GodEngine\LayerStack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\GodEngine\Application.cpp">
@@ -59,5 +61,7 @@
       <Filter>GodEngine\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="..\src\gepch.cpp" />
+    <ClCompile Include="..\src\GodEngine\Layer.cpp" />
+    <ClCompile Include="..\src\GodEngine\LayerStack.cpp" />
   </ItemGroup>
 </Project>

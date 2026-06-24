@@ -169,6 +169,8 @@
     <ClInclude Include="..\src\GodEngine\Events\Event.h" />
     <ClInclude Include="..\src\GodEngine\Events\KeyEvent.h" />
     <ClInclude Include="..\src\GodEngine\Events\MouseEvent.h" />
+    <ClInclude Include="..\src\GodEngine\Layer.h" />
+    <ClInclude Include="..\src\GodEngine\LayerStack.h" />
     <ClInclude Include="..\src\GodEngine\Log.h" />
     <ClInclude Include="..\src\GodEngine\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="..\src\GodEngine\Window.h" />
@@ -176,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\GodEngine\Application.cpp" />
+    <ClCompile Include="..\src\GodEngine\Layer.cpp" />
+    <ClCompile Include="..\src\GodEngine\LayerStack.cpp" />
     <ClCompile Include="..\src\GodEngine\Log.cpp" />
     <ClCompile Include="..\src\GodEngine\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="..\src\gepch.cpp">
