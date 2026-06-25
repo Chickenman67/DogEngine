@@ -15,6 +15,7 @@ IncludeDir["GLFW"] = "GodEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "GodEngine/vendor/glad/include"
 
 include "GodEngine/vendor/GLFW"
+include "GodEngine/vendor/glad" 
 
 project "GodEngine"
     location "GodEngine"
@@ -44,6 +45,7 @@ project "GodEngine"
 
     links{
         "GLFW",
+        "GLAD",
         "opengl32.lib"
     }
 
@@ -56,6 +58,7 @@ project "GodEngine"
         {
             "GE_PLATFORM_WINDOWS",
             "GE_BUILD_DLL"
+            "GLFW_INCLUDE_NONE"
         }
 
         buildoptions { "/utf-8" }
