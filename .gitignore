@@ -4,6 +4,7 @@
 bin/
 bin-int/
 vendor/bin/
+Sandbox/imgui.ini
 
 #files
 GodEngine.vcxproj.user

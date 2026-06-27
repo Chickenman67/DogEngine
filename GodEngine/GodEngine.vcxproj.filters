@@ -16,9 +16,6 @@
     <Filter Include="src\GodEngine\Platform">
       <UniqueIdentifier>{A0D174CB-8CCB-9D1D-7538-342E61D1038A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\GodEngine\Platform\OpenGL">
-      <UniqueIdentifier>{D466412B-407F-2855-092C-B8EE7503BDEE}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\GodEngine\Platform\Windows">
       <UniqueIdentifier>{DA1B8AEB-C641-5452-AF87-D91D9B4C791E}</UniqueIdentifier>
     </Filter>
@@ -48,12 +45,6 @@
     </Filter>
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="vendor\imgui">
-      <UniqueIdentifier>{5D3BD0F0-499E-5F95-F223-984BDE652B18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="vendor\imgui\backends">
-      <UniqueIdentifier>{27CEAEAF-933A-6AAA-5C2E-0208C8598C12}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -101,9 +92,6 @@
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\MouseButtonCodes.h">
       <Filter>src\GodEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\GodEngine\Platform\OpenGL\imgui_impl_opengl3.h">
-      <Filter>src\GodEngine\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="..\src\GodEngine\Platform\Windows\WindowsInput.h">
       <Filter>src\GodEngine\Platform\Windows</Filter>
@@ -1379,6 +1367,9 @@
     <ClCompile Include="..\src\GodEngine\Application.cpp">
       <Filter>src\GodEngine</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\GodEngine\ImGui\ImGuiBuild.cpp">
+      <Filter>src\GodEngine\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\GodEngine\ImGui\ImGuiLayer.cpp">
       <Filter>src\GodEngine\ImGui</Filter>
     </ClCompile>
@@ -1391,9 +1382,6 @@
     <ClCompile Include="..\src\GodEngine\Log.cpp">
       <Filter>src\GodEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\GodEngine\Platform\OpenGL\imgui_impl_opengl3.cpp">
-      <Filter>src\GodEngine\Platform\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\GodEngine\Platform\Windows\WindowsInput.cpp">
       <Filter>src\GodEngine\Platform\Windows</Filter>
     </ClCompile>
@@ -1405,9 +1393,6 @@
     </ClCompile>
     <ClCompile Include="vendor\glad\src\glad.c">
       <Filter>vendor\glad\src</Filter>
-    </ClCompile>
-    <ClCompile Include="vendor\imgui\backends\imgui_impl_glfw.cpp">
-      <Filter>vendor\imgui\backends</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

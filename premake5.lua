@@ -41,8 +41,7 @@ project "GodEngine"
         "src/GodEngine/**.cpp",
         "%{prj.name}/vendor/glad/src/glad.c",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-        "%{prj.name}/vendor/glm/glm/**.inl",
-        "%{prj.name}/vendor/imgui/backends/imgui_impl_glfw.cpp"
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
 
     includedirs

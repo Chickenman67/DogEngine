@@ -176,7 +176,6 @@
     <ClInclude Include="..\src\GodEngine\LayerStack.h" />
     <ClInclude Include="..\src\GodEngine\Log.h" />
     <ClInclude Include="..\src\GodEngine\MouseButtonCodes.h" />
-    <ClInclude Include="..\src\GodEngine\Platform\OpenGL\imgui_impl_opengl3.h" />
     <ClInclude Include="..\src\GodEngine\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="..\src\GodEngine\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="..\src\GodEngine\Window.h" />
@@ -603,11 +602,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\GodEngine\Application.cpp" />
+    <ClCompile Include="..\src\GodEngine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="..\src\GodEngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="..\src\GodEngine\Layer.cpp" />
     <ClCompile Include="..\src\GodEngine\LayerStack.cpp" />
     <ClCompile Include="..\src\GodEngine\Log.cpp" />
-    <ClCompile Include="..\src\GodEngine\Platform\OpenGL\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\src\GodEngine\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="..\src\GodEngine\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="..\src\gepch.cpp">
@@ -616,7 +615,6 @@
     <ClCompile Include="vendor\glad\src\glad.c">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="vendor\imgui\backends\imgui_impl_glfw.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
