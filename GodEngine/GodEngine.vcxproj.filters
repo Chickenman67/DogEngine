@@ -49,6 +49,12 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\imgui">
+      <UniqueIdentifier>{5D3BD0F0-499E-5F95-F223-984BDE652B18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\imgui\backends">
+      <UniqueIdentifier>{27CEAEAF-933A-6AAA-5C2E-0208C8598C12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\GodEngine.h">
@@ -1376,9 +1382,6 @@
     <ClCompile Include="..\src\GodEngine\ImGui\ImGuiLayer.cpp">
       <Filter>src\GodEngine\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\GodEngine\ImGuiBuild.cpp">
-      <Filter>src\GodEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\GodEngine\Layer.cpp">
       <Filter>src\GodEngine</Filter>
     </ClCompile>
@@ -1402,6 +1405,9 @@
     </ClCompile>
     <ClCompile Include="vendor\glad\src\glad.c">
       <Filter>vendor\glad\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>vendor\imgui\backends</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -41,7 +41,8 @@ project "GodEngine"
         "src/GodEngine/**.cpp",
         "%{prj.name}/vendor/glad/src/glad.c",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-        "%{prj.name}/vendor/glm/glm/**.inl"
+        "%{prj.name}/vendor/glm/glm/**.inl",
+        "%{prj.name}/vendor/imgui/backends/imgui_impl_glfw.cpp"
     }
 
     includedirs
@@ -69,7 +70,8 @@ project "GodEngine"
         {
             "GE_PLATFORM_WINDOWS",
             "GE_BUILD_DLL",
-            "GLFW_INCLUDE_NONE"
+            "GLFW_INCLUDE_NONE",
+            "_CRT_SECURE_NO_WARNINGS"
         }
 
         buildoptions { "/utf-8" }
