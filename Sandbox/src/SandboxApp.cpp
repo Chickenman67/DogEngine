@@ -1,6 +1,8 @@
 #include "gepch.h"
 #include "GodEngine.h"
 
+
+
 class ExampleLayer : public GodEngine::Layer {
 public:
 	ExampleLayer()

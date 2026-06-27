@@ -7,3 +7,6 @@
 [submodule "GodEngine/vendor/imgui"]
 	path = GodEngine/vendor/imgui
 	url = https://github.com/Chickenman67/imgui
+[submodule "GodEngine/vendor/glm"]
+	path = GodEngine/vendor/glm
+	url = https://github.com/g-truc/glm

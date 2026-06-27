@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "GodEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "GodEngine/vendor/glad/include"
 IncludeDir["ImGui"] = "GodEngine/vendor/imgui"
+IncludeDir["glm"] = "GodEngine/vendor/glm"
 
 
 
@@ -38,7 +39,9 @@ project "GodEngine"
         "src/**.cpp",
         "src/GodEngine/**.h",
         "src/GodEngine/**.cpp",
-        "%{prj.name}/vendor/glad/src/glad.c"
+        "%{prj.name}/vendor/glad/src/glad.c",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
 
     includedirs
@@ -47,7 +50,8 @@ project "GodEngine"
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links{
@@ -111,7 +115,8 @@ project "Sandbox"
     includedirs
     {
         "src",
-        "GodEngine/vendor/spdlog/include"
+        "GodEngine/vendor/spdlog/include",
+        "%{IncludeDir.glm}" 
     }
 
     links
