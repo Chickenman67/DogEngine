@@ -2,9 +2,9 @@
 
 #include "GodEngine/Window.h"
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
+#include "GodEngine/Renderer/GraphicsContext.h"
+#include <GLFW/glfw3.h>
 namespace GodEngine {
 
 	class WindowsWindow : public Window {
@@ -31,6 +31,7 @@ namespace GodEngine {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData {
 			std::string Title;
