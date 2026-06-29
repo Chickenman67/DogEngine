@@ -12,6 +12,11 @@ namespace GodEngine {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int gladStatus = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		GE_CORE_ASSERT(gladStatus, "Failed to initialize Glad!");
+
+		GE_CORE_INFO("OpenGL Info:")
+		GE_CORE_INFO(" Vendor: {0}", (const char*)glGetString(GL_VENDOR));
+		GE_CORE_INFO(" Renderer: {}", (const char*)glGetString(GL_RENDERER));
+		GE_CORE_INFO(" Version: {}", (const char*)glGetString(GL_VERSION));
 	}
 	void OpenGLContext::SwapBuffers()
 	{
