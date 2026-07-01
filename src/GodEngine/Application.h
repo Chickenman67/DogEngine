@@ -7,7 +7,6 @@
 #include "Window.h"
 #include "GodEngine/ImGui/ImGuiLayer.h"
 #include "GodEngine/Renderer/shader.h"
-#include "GodEngine/Renderer/Buffer.h"
 #include "GodEngine/Renderer/VertexArray.h"
 
 #ifdef _MSC_VER
@@ -40,8 +39,7 @@ namespace GodEngine {
 		
 		std::shared_ptr<shader> m_Shader;
 		std::shared_ptr<VertexArray> m_VertexArray;
-		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		std::shared_ptr<IndexBuffer> m_IndexBuffer;
+		
 		std::shared_ptr<shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
 	private:

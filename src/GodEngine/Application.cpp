@@ -3,7 +3,6 @@
 
 #include "Log.h"
 #include <glad/glad.h>
-#include "Input.h"
 
 
 
@@ -31,36 +30,36 @@ namespace GodEngine {
 			.5f,-.5f,.0f,  0.0f,1.0f,0.0f,1.0f,
 			.0f,.5f,.0f,   0.0f,0.0f,1.0f,1.0f
 		};
-
-		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+		std::shared_ptr<VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 		
 			BufferLayout layout = {
 				{"a_Position", ShaderDataType::Float3},
 				{"a_Color", ShaderDataType::Float4},
 
 			};
-			m_VertexBuffer->SetLayout(layout);
+			vertexBuffer->SetLayout(layout);
 		
 		
 
-		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
+		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		
 
-		
+		std::shared_ptr<IndexBuffer> indexBuffer;
 
 		unsigned int indices[3] = { 0, 1, 2 };
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 
-		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
+		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA.reset(VertexArray::Create());
 		float sqrvertices[3 * 4] = {
-			-.5f,-.5f,0.0f,
-			.5f,-.5f,.0f,
-			.5f,.5f,.0f,
-			-.5f,.5f,.0f
-		};
+			-.75f,-.75f,0.0f,
+			 .75f,-.75f,.0f,
+			 .75f, .75f,.0f,
+			-.75f, .75f,.0f
+		};			
 		std::shared_ptr<VertexBuffer> squareVB;
 		squareVB.reset(VertexBuffer::Create(sqrvertices, sizeof(sqrvertices)));
 		
@@ -166,7 +165,7 @@ namespace GodEngine {
 
 			m_Shader->Bind();
 			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES,m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES,m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
