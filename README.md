@@ -1,6 +1,6 @@
 # DogEngine
 
-A 2D game engine built with C++ and OpenGL, based on the super famous [GodEngine](https://github.com/Chickenman67/GodEngine) and [Hazel Engine](https://github.com/TheCherno/Hazel) by The Cherno.
+A 2D game engine built with C++ and OpenGL, based on the super famous [GodEngine](https://github.com/Chickenman67/GodEngine) by [TheGoat](https://github.com/Chickenman67) and [Hazel Engine](https://github.com/TheCherno/Hazel) by The Cherno.
 
 ## Features
 
