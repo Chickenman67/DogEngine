@@ -11,6 +11,14 @@
 #include "GodEngine/KeyCodes.h"
 
 #include "GodEngine/ImGui/ImGuiLayer.h"
+//render
+#include "GodEngine/Renderer/Renderer.h"
+#include "GodEngine/Renderer/RenderCommand.h"
+#include "GodEngine/Renderer/Shader.h"
+#include "GodEngine/Renderer/Buffer.h"
+#include "GodEngine/Renderer/VertexArray.h"
+#include "GodEngine/Renderer/OrthoCamera.h"
+
 
 // - - Entry Point--
 #include "GodEngine/EntryPoint.h"

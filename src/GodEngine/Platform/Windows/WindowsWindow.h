@@ -22,6 +22,8 @@ namespace GodEngine {
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled);
 		bool IsVSync() const;
+		void SetFullscreen(bool enabled) override;
+		bool IsFullscreen() const override { return m_Data.Fullscreen; }
 		inline virtual void* GetNativeWindow() const {
 			return m_Window;
 		}
@@ -37,6 +39,9 @@ namespace GodEngine {
 			std::string Title;
 			unsigned int Width, Height;
 			bool VSync;
+			bool Fullscreen = false;
+			int WindowedX = 100, WindowedY = 100;
+			unsigned int WindowedWidth = 1280, WindowedHeight = 720;
 
 			EventCallbackFn EventCallback;
 		};

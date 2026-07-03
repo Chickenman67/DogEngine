@@ -6,6 +6,7 @@
 #include "GodEngine/Events/MouseEvent.h"
 
 #include "GodEngine/Platform/OpenGL/OpenGLContext.h"
+#include <glad/glad.h>
 
 namespace GodEngine {
 	static bool s_GLFWInitialized = false;
@@ -53,6 +54,7 @@ namespace GodEngine {
             WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
             data.Width = width;
             data.Height = height;
+            glViewport(0, 0, width, height);
             WindowResizeEvent event(width, height);
 
             data.EventCallback(event);
@@ -139,6 +141,21 @@ namespace GodEngine {
         m_Context->SwapBuffers();
         
     }
+    void WindowsWindow::SetFullscreen(bool enabled) {
+        if (enabled) {
+            glfwGetWindowPos(m_Window, &m_Data.WindowedX, &m_Data.WindowedY);
+            m_Data.WindowedWidth = m_Data.Width;
+            m_Data.WindowedHeight = m_Data.Height;
+            GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+            const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+            glfwSetWindowMonitor(m_Window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+        } else {
+            glfwSetWindowMonitor(m_Window, nullptr, m_Data.WindowedX, m_Data.WindowedY,
+                (int)m_Data.WindowedWidth, (int)m_Data.WindowedHeight, 0);
+        }
+        m_Data.Fullscreen = enabled;
+    }
+
     void WindowsWindow::SetVSync(bool enabled) {
         if (enabled)
             glfwSwapInterval(1);
