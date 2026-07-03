@@ -22,7 +22,7 @@ A 2D game engine built with C++ and OpenGL, based on the super famous [GodEngine
 
 ## Building
 
-Run `GenerateProject.bat` to generate Visual Studio solution files, then open `GodEngine.sln` and build.
+Run `GenerateProject.bat` to generate Visual Studio solution files, then open `DogEngine.sln` and build.
 
 ## Dependencies
 

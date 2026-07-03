@@ -1,0 +1,49 @@
+#pragma once
+
+#include "Core.h"
+#include "Events/Event.h"
+#include "LayerStack.h"
+#include "Events/ApplicationEvent.h"
+#include "Window.h"
+#include "DogEngine/ImGui/ImGuiLayer.h"
+
+
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable : 4251)
+#endif
+
+namespace DogEngine {
+	class DOGENGINE_API Application
+	{
+	public:
+		Application();
+		virtual ~Application();
+
+		void Run();
+
+		void OnEvent(Event& e);
+		void PushLayer(Layer* layer);
+		void PushOverLay(Layer* layer);
+
+		static inline Application& Get() { return *s_Instance; }
+		inline Window& GetWindow() { return *m_Window; }
+	private:
+		bool OnWindowClose(WindowCloseEvent& e);
+		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
+		bool m_Running = true;
+		LayerStack m_LayerStack;
+
+		
+		
+	private:
+		static Application* s_Instance;
+	};
+	
+	Application* CreateApplication();
+}
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif

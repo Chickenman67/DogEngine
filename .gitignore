@@ -7,5 +7,5 @@ vendor/bin/
 Sandbox/imgui.ini
 
 #files
-GodEngine.vcxproj.user
+DogEngine.vcxproj.user
 Sandbox.vcxproj.user

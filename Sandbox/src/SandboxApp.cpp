@@ -1,16 +1,16 @@
 #include "gepch.h"
-#include "GodEngine.h"
+#include "DogEngine.h"
 #include "imgui/imgui.h"
-#include "GodEngine/Events/KeyEvent.h"
-#include "GodEngine/Events/ApplicationEvent.h"
+#include "DogEngine/Events/KeyEvent.h"
+#include "DogEngine/Events/ApplicationEvent.h"
 
 
-class ExampleLayer : public GodEngine::Layer {
+class ExampleLayer : public DogEngine::Layer {
 public:
 	ExampleLayer()
 		: Layer("Example"), m_Camera(-1.6f, 1.6f, .9f, -.9f), m_CameraPosition(0.0f)
 	{
-		m_VertexArray.reset(GodEngine::VertexArray::Create());
+		m_VertexArray.reset(DogEngine::VertexArray::Create());
 
 
 		float vertices[3 * 7] = {
@@ -18,12 +18,12 @@ public:
 			.5f,-.5f,.0f,  0.0f,1.0f,0.0f,1.0f,
 			.0f,.5f,.0f,   0.0f,0.0f,1.0f,1.0f
 		};
-		std::shared_ptr<GodEngine::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(GodEngine::VertexBuffer::Create(vertices, sizeof(vertices)));
+		std::shared_ptr<DogEngine::VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(DogEngine::VertexBuffer::Create(vertices, sizeof(vertices)));
 
-		GodEngine::BufferLayout layout = {
-			{"a_Position", GodEngine::ShaderDataType::Float3},
-			{"a_Color", GodEngine::ShaderDataType::Float4},
+		DogEngine::BufferLayout layout = {
+			{"a_Position", DogEngine::ShaderDataType::Float3},
+			{"a_Color", DogEngine::ShaderDataType::Float4},
 
 		};
 		vertexBuffer->SetLayout(layout);
@@ -34,35 +34,35 @@ public:
 
 
 
-		std::shared_ptr<GodEngine::IndexBuffer> indexBuffer;
+		std::shared_ptr<DogEngine::IndexBuffer> indexBuffer;
 
 		unsigned int indices[3] = { 0, 1, 2 };
-		indexBuffer.reset(GodEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		indexBuffer.reset(DogEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVA.reset(GodEngine::VertexArray::Create());
+		m_SquareVA.reset(DogEngine::VertexArray::Create());
 		float sqrvertices[3 * 4] = {
 			-.75f,-.75f,0.0f,
 			 .75f,-.75f,.0f,
 			 .75f, .75f,.0f,
 			-.75f, .75f,.0f
 		};
-		std::shared_ptr<GodEngine::VertexBuffer> squareVB;
-		squareVB.reset(GodEngine::VertexBuffer::Create(sqrvertices, sizeof(sqrvertices)));
+		std::shared_ptr<DogEngine::VertexBuffer> squareVB;
+		squareVB.reset(DogEngine::VertexBuffer::Create(sqrvertices, sizeof(sqrvertices)));
 
 
 
 		squareVB->SetLayout({
-			{"a_Position", GodEngine::ShaderDataType::Float3}
+			{"a_Position", DogEngine::ShaderDataType::Float3}
 
 
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		unsigned int sqrindices[6] = { 0, 1, 2 ,2,3,0 };
-		std::shared_ptr<GodEngine::IndexBuffer> squareIB;
-		squareIB.reset(GodEngine::IndexBuffer::Create(sqrindices, sizeof(sqrindices) / sizeof(uint32_t)));
+		std::shared_ptr<DogEngine::IndexBuffer> squareIB;
+		squareIB.reset(DogEngine::IndexBuffer::Create(sqrindices, sizeof(sqrindices) / sizeof(uint32_t)));
 
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -87,7 +87,7 @@ public:
 				color = v_Color;
 			
 })";
-		m_Shader.reset(new GodEngine::shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(new DogEngine::shader(vertexSrc, fragmentSrc));
 
 
 		std::string blueShaderVertexSrc = R"(
@@ -111,57 +111,57 @@ uniform mat4 u_ViewProjection;
 				color = vec4(0.2,.3,.8,1.0);
 			
 })";
-		m_BlueShader.reset(new GodEngine::shader(blueShaderVertexSrc, blueShaderFragmentSrc));
+		m_BlueShader.reset(new DogEngine::shader(blueShaderVertexSrc, blueShaderFragmentSrc));
 	}
 
 	void OnUpdate() override {
 
-		if (GodEngine::Input::IsKeyPressed(GE_KEY_LEFT)) {
+		if (DogEngine::Input::IsKeyPressed(GE_KEY_LEFT)) {
 			m_CameraPosition.x -= m_CameraMoveSpeed;
 		}
-		else if (GodEngine::Input::IsKeyPressed(GE_KEY_RIGHT)) {
+		else if (DogEngine::Input::IsKeyPressed(GE_KEY_RIGHT)) {
 			m_CameraPosition.x += m_CameraMoveSpeed;
 		}
-		if (GodEngine::Input::IsKeyPressed(GE_KEY_UP)) {
+		if (DogEngine::Input::IsKeyPressed(GE_KEY_UP)) {
 			m_CameraPosition.y += m_CameraMoveSpeed;
 		}
-		else if (GodEngine::Input::IsKeyPressed(GE_KEY_DOWN)) {
+		else if (DogEngine::Input::IsKeyPressed(GE_KEY_DOWN)) {
 			m_CameraPosition.y -= m_CameraMoveSpeed;
 		}
-		if (GodEngine::Input::IsKeyPressed(GE_KEY_A))
+		if (DogEngine::Input::IsKeyPressed(GE_KEY_A))
 			m_CameraRotation += m_CameraRotationSpeed;
-		if (GodEngine::Input::IsKeyPressed(GE_KEY_D))
+		if (DogEngine::Input::IsKeyPressed(GE_KEY_D))
 			m_CameraRotation -= m_CameraRotationSpeed;
 
-		GodEngine::RenderCommand::SetClearColor({ .1f, .1f, .1f, 1 });
-		GodEngine::RenderCommand::Clear();
+		DogEngine::RenderCommand::SetClearColor({ .1f, .1f, .1f, 1 });
+		DogEngine::RenderCommand::Clear();
 
 		m_Camera.SetPosition(m_CameraPosition);
 		m_Camera.SetRotation(m_CameraRotation);
 
-		GodEngine::Renderer::BeginScene(m_Camera);
+		DogEngine::Renderer::BeginScene(m_Camera);
 
 
-		GodEngine::Renderer::Submit(m_SquareVA, m_BlueShader);
-		GodEngine::Renderer::Submit(m_VertexArray, m_Shader);
-		GodEngine::Renderer::EndScene();
+		DogEngine::Renderer::Submit(m_SquareVA, m_BlueShader);
+		DogEngine::Renderer::Submit(m_VertexArray, m_Shader);
+		DogEngine::Renderer::EndScene();
 }
 
 	virtual void OnImGuiRender() override {
 		
 	}
 	
-	void OnEvent(GodEngine::Event& event) override {
-		GodEngine::EventDispatcher dispatcher(event);
-		dispatcher.Dispatch<GodEngine::KeyPressedEvent>([](GodEngine::KeyPressedEvent& e) {
+	void OnEvent(DogEngine::Event& event) override {
+		DogEngine::EventDispatcher dispatcher(event);
+		dispatcher.Dispatch<DogEngine::KeyPressedEvent>([](DogEngine::KeyPressedEvent& e) {
 			if (e.GetKeyCode() == GE_KEY_F11) {
-				auto& window = GodEngine::Application::Get().GetWindow();
+				auto& window = DogEngine::Application::Get().GetWindow();
 				window.SetFullscreen(!window.IsFullscreen());
 				return true;
 			}
 			return false;
 			});
-		dispatcher.Dispatch<GodEngine::WindowResizeEvent>([this](GodEngine::WindowResizeEvent& e) {
+		dispatcher.Dispatch<DogEngine::WindowResizeEvent>([this](DogEngine::WindowResizeEvent& e) {
 			float aspect = (float)e.GetWidth() / (float)e.GetHeight();
 			float orthoSize = 1.0f;
 			if (aspect > 1.0f)
@@ -173,20 +173,20 @@ uniform mat4 u_ViewProjection;
 	}
 	
 	private:
-		std::shared_ptr<GodEngine::shader> m_Shader;
-		std::shared_ptr<GodEngine::VertexArray> m_VertexArray;
+		std::shared_ptr<DogEngine::shader> m_Shader;
+		std::shared_ptr<DogEngine::VertexArray> m_VertexArray;
 
-		std::shared_ptr<GodEngine::shader> m_BlueShader;
-		std::shared_ptr<GodEngine::VertexArray> m_SquareVA;
+		std::shared_ptr<DogEngine::shader> m_BlueShader;
+		std::shared_ptr<DogEngine::VertexArray> m_SquareVA;
 
-		GodEngine::OrthoCamera m_Camera;
+		DogEngine::OrthoCamera m_Camera;
 		glm::vec3 m_CameraPosition;
 		float m_CameraMoveSpeed = 0.1f;
 		float m_CameraRotation = 0.0f;
 		float m_CameraRotationSpeed = 2.1f;
 };
 
-class Sandbox : public GodEngine::Application {
+class Sandbox : public DogEngine::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
@@ -197,6 +197,6 @@ public:
 };
 
 
-GodEngine::Application* GodEngine::CreateApplication() {
+DogEngine::Application* DogEngine::CreateApplication() {
 	return new Sandbox();
 }

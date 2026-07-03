@@ -1,4 +1,4 @@
-workspace "GodEngine"
+workspace "DogEngine"
     architecture "x64"
     startproject"Sandbox"
 
@@ -12,19 +12,19 @@ workspace "GodEngine"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "GodEngine/vendor/GLFW/include"
-IncludeDir["Glad"] = "GodEngine/vendor/glad/include"
-IncludeDir["ImGui"] = "GodEngine/vendor/imgui"
-IncludeDir["glm"] = "GodEngine/vendor/glm"
+IncludeDir["GLFW"] = "DogEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "DogEngine/vendor/glad/include"
+IncludeDir["ImGui"] = "DogEngine/vendor/imgui"
+IncludeDir["glm"] = "DogEngine/vendor/glm"
 
 
 
-include "GodEngine/vendor/GLFW"
-include "GodEngine/vendor/glad" 
-include "GodEngine/vendor/imgui"
+include "DogEngine/vendor/GLFW"
+include "DogEngine/vendor/glad" 
+include "DogEngine/vendor/imgui"
 
-project "GodEngine"
-    location "GodEngine"
+project "DogEngine"
+    location "DogEngine"
     kind "StaticLib"
     language "C++"
     cppdialect "C++17"
@@ -38,8 +38,8 @@ project "GodEngine"
     {
         "src/**.h",
         "src/**.cpp",
-        "src/GodEngine/**.h",
-        "src/GodEngine/**.cpp",
+        "src/DogEngine/**.h",
+        "src/DogEngine/**.cpp",
         "%{prj.name}/vendor/glad/src/glad.c",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
@@ -114,14 +114,14 @@ project "Sandbox"
     includedirs
     {
         "src",
-        "GodEngine/vendor/spdlog/include",
-        "GodEngine/vendor",
+        "DogEngine/vendor/spdlog/include",
+        "DogEngine/vendor",
         "%{IncludeDir.glm}" 
     }
 
     links
     {
-        "GodEngine"
+        "DogEngine"
     }
 
     filter "system:windows"

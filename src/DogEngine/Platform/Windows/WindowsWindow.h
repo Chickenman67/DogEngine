@@ -1,0 +1,50 @@
+#pragma once
+
+#include "DogEngine/Window.h"
+
+
+#include "DogEngine/Renderer/GraphicsContext.h"
+#include <GLFW/glfw3.h>
+namespace DogEngine {
+
+	class WindowsWindow : public Window {
+	public:
+		WindowsWindow(const WindowProps& props);
+
+		virtual ~WindowsWindow();
+
+		void OnUpdate() override;
+
+		inline unsigned int GetWidth() const override { return m_Data.Width; }
+		inline unsigned int GetHeight() const override { return m_Data.Height; }
+
+
+		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
+		void SetVSync(bool enabled);
+		bool IsVSync() const;
+		void SetFullscreen(bool enabled) override;
+		bool IsFullscreen() const override { return m_Data.Fullscreen; }
+		inline virtual void* GetNativeWindow() const {
+			return m_Window;
+		}
+
+	private:
+		virtual void Init(const WindowProps& props);
+		virtual void Shutdown();
+	private:
+		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
+
+		struct WindowData {
+			std::string Title;
+			unsigned int Width, Height;
+			bool VSync;
+			bool Fullscreen = false;
+			int WindowedX = 100, WindowedY = 100;
+			unsigned int WindowedWidth = 1280, WindowedHeight = 720;
+
+			EventCallbackFn EventCallback;
+		};
+		WindowData m_Data;
+	};
+}

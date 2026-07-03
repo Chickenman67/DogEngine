@@ -1,12 +1,12 @@
-[submodule "GodEngine/vendor/spdlog"]
-	path = GodEngine/vendor/spdlog
+[submodule "DogEngine/vendor/spdlog"]
+	path = DogEngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
-[submodule "GodEngine/vendor/GLFW"]
-	path = GodEngine/vendor/GLFW
+[submodule "DogEngine/vendor/GLFW"]
+	path = DogEngine/vendor/GLFW
 	url = https://github.com/Chickenman67/glfw
-[submodule "GodEngine/vendor/imgui"]
-	path = GodEngine/vendor/imgui
+[submodule "DogEngine/vendor/imgui"]
+	path = DogEngine/vendor/imgui
 	url = https://github.com/Chickenman67/imgui
-[submodule "GodEngine/vendor/glm"]
-	path = GodEngine/vendor/glm
+[submodule "DogEngine/vendor/glm"]
+	path = DogEngine/vendor/glm
 	url = https://github.com/g-truc/glm
