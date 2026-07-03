@@ -8,6 +8,7 @@
 #include "GodEngine/ImGui/ImGuiLayer.h"
 #include "GodEngine/Renderer/shader.h"
 #include "GodEngine/Renderer/VertexArray.h"
+#include <GodEngine/Renderer/OrthoCamera.h>
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -42,6 +43,8 @@ namespace GodEngine {
 		
 		std::shared_ptr<shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthoCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

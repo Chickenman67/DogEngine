@@ -175,6 +175,7 @@
     <ClInclude Include="..\src\GodEngine\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="..\src\GodEngine\Renderer\Buffer.h" />
     <ClInclude Include="..\src\GodEngine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="..\src\GodEngine\Renderer\OrthoCamera.h" />
     <ClInclude Include="..\src\GodEngine\Renderer\RenderCommand.h" />
     <ClInclude Include="..\src\GodEngine\Renderer\Renderer.h" />
     <ClInclude Include="..\src\GodEngine\Renderer\RendererAPI.h" />
@@ -616,6 +617,7 @@
     <ClCompile Include="..\src\GodEngine\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="..\src\GodEngine\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="..\src\GodEngine\Renderer\Buffer.cpp" />
+    <ClCompile Include="..\src\GodEngine\Renderer\OrthoCamera.cpp" />
     <ClCompile Include="..\src\GodEngine\Renderer\RenderCommand.cpp" />
     <ClCompile Include="..\src\GodEngine\Renderer\Renderer.cpp" />
     <ClCompile Include="..\src\GodEngine\Renderer\RendererAPI.cpp" />

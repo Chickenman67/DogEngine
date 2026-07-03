@@ -14,7 +14,7 @@ namespace GodEngine {
 	Application* Application::s_Instance = nullptr;
 
 	
-	Application::Application()
+	Application::Application() : m_Camera(-1.6f,1.6f,.9f,-.9f)
 	{
 		GE_CORE_ASSERT(!s_Instance, "Application already exist!");
 		s_Instance = this;
@@ -82,12 +82,12 @@ namespace GodEngine {
 			#version 330 core
 			layout(location=0) in vec3 a_Position;
 			layout(location=1) in vec4 a_Color;
-
+			uniform mat4 u_ViewProjection;
 			out vec4 v_Color;
 
 			void main(){
 				v_Color = a_Color;
-				gl_Position = vec4(a_Position, 1.0);
+			gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 			}
 )";
 		std::string fragmentSrc = R"(
@@ -105,17 +105,18 @@ namespace GodEngine {
 		std::string blueShaderVertexSrc = R"(
 			#version 330 core
 			layout(location=0) in vec3 a_Position;
-
+uniform mat4 u_ViewProjection;
 			out vec3 v_Position;
 
 			void main(){
 				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection*vec4(a_Position, 1.0);
 			}
 )";
 		std::string blueShaderFragmentSrc = R"(
 			#version 330 core
 			layout(location=0) out vec4 color;
+
 			in vec3 v_Position;
 
 			void main(){
@@ -158,13 +159,14 @@ namespace GodEngine {
 			
 			RenderCommand::SetClearColor({.1f, .1f, .1f, 1});
 			RenderCommand::Clear();
+			m_Camera.SetPosition({ .5f,.5f,.0f });
+			m_Camera.SetRotation(45.0f);
+			
+			Renderer::BeginScene(m_Camera);
 
-			Renderer::BeginScene();
 
-			m_BlueShader->Bind();
-			Renderer::Submit(m_SquareVA);
-			m_Shader->Bind();
-			Renderer::Submit(m_VertexArray);
+			Renderer::Submit(m_SquareVA, m_BlueShader);
+			Renderer::Submit(m_VertexArray, m_Shader);
 			Renderer::EndScene();
 
 			
