@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -15,7 +15,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F5ADDF6B-6118-94E2-AA56-458816007237}</ProjectGuid>
+    <ProjectGuid>{351159F5-A17B-0D6C-EAB9-BE115663EBC0}</ProjectGuid>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DogEngine</RootNamespace>
@@ -26,19 +26,19 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -76,8 +76,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>gepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;GE_BUILD_DLL;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\src;vendor\spdlog\include;vendor\GLFW\include;vendor\glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;GE_BUILD_DLL;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;GE_DEBUG;GE_ENABLE_PROFILING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\src;vendor\spdlog\include;vendor\GLFW\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -101,7 +101,7 @@
       <PrecompiledHeaderFile>gepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;GE_BUILD_DLL;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;GE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\src;vendor\spdlog\include;vendor\GLFW\include;vendor\glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;vendor\spdlog\include;vendor\GLFW\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -129,7 +129,7 @@
       <PrecompiledHeaderFile>gepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;GE_BUILD_DLL;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;GE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\src;vendor\spdlog\include;vendor\GLFW\include;vendor\glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;vendor\spdlog\include;vendor\GLFW\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -155,6 +155,7 @@
     <ClInclude Include="..\src\DogEngine.h" />
     <ClInclude Include="..\src\DogEngine\Application.h" />
     <ClInclude Include="..\src\DogEngine\Core.h" />
+    <ClInclude Include="..\src\DogEngine\Debug\Instrumentor.h" />
     <ClInclude Include="..\src\DogEngine\EntryPoint.h" />
     <ClInclude Include="..\src\DogEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="..\src\DogEngine\Events\Event.h" />
@@ -170,17 +171,25 @@
     <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="..\src\DogEngine\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="..\src\DogEngine\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="..\src\DogEngine\Renderer\Buffer.h" />
     <ClInclude Include="..\src\DogEngine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="..\src\DogEngine\Renderer\Material.h" />
     <ClInclude Include="..\src\DogEngine\Renderer\OrthoCamera.h" />
+    <ClInclude Include="..\src\DogEngine\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="..\src\DogEngine\Renderer\RenderCommand.h" />
     <ClInclude Include="..\src\DogEngine\Renderer\Renderer.h" />
+    <ClInclude Include="..\src\DogEngine\Renderer\Renderer2D.h" />
     <ClInclude Include="..\src\DogEngine\Renderer\RendererAPI.h" />
+    <ClInclude Include="..\src\DogEngine\Renderer\ShaderLibrary.h" />
+    <ClInclude Include="..\src\DogEngine\Renderer\Texture.h" />
+    <ClInclude Include="..\src\DogEngine\Renderer\Timestep.h" />
+    <ClInclude Include="..\src\DogEngine\Renderer\Transform.h" />
     <ClInclude Include="..\src\DogEngine\Renderer\VertexArray.h" />
-    <ClInclude Include="..\src\DogEngine\Renderer\shader.h" />
     <ClInclude Include="..\src\DogEngine\Window.h" />
     <ClInclude Include="..\src\gepch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -613,22 +622,29 @@
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="..\src\DogEngine\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="..\src\DogEngine\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="..\src\DogEngine\Renderer\Buffer.cpp" />
     <ClCompile Include="..\src\DogEngine\Renderer\OrthoCamera.cpp" />
+    <ClCompile Include="..\src\DogEngine\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="..\src\DogEngine\Renderer\RenderCommand.cpp" />
     <ClCompile Include="..\src\DogEngine\Renderer\Renderer.cpp" />
+    <ClCompile Include="..\src\DogEngine\Renderer\Renderer2D.cpp" />
     <ClCompile Include="..\src\DogEngine\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="..\src\DogEngine\Renderer\Shader.cpp" />
+    <ClCompile Include="..\src\DogEngine\Renderer\ShaderLibrary.cpp" />
+    <ClCompile Include="..\src\DogEngine\Renderer\Texture.cpp" />
     <ClCompile Include="..\src\DogEngine\Renderer\VertexArray.cpp" />
-    <ClCompile Include="..\src\DogEngine\Renderer\shader.cpp" />
     <ClCompile Include="..\src\gepch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vendor\glad\src\glad.c">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image_impl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

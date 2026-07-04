@@ -6,7 +6,7 @@ namespace DogEngine {
 		OpenGLVertexBuffer(float* vertices, uint32_t size);
 		virtual ~OpenGLVertexBuffer();
 
-		virtual void SetData() override {}
+		virtual void SetData(uint32_t size, const void* data) override;
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
@@ -20,7 +20,7 @@ namespace DogEngine {
 	};
 	class OpenGLIndexBuffer : public IndexBuffer {
 	public:
-		OpenGLIndexBuffer(uint32_t* incdices, uint32_t count);
+		OpenGLIndexBuffer(uint32_t* indices, uint32_t count);
 		virtual ~OpenGLIndexBuffer();
 
 		virtual void Bind() const;

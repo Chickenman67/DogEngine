@@ -10,7 +10,7 @@ namespace DogEngine {
 	void Renderer::EndScene()
 	{
 	}
-	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<shader>& Shader)
+	void Renderer::Submit(const Ref<VertexArray>& vertexArray, const Ref<Shader>& Shader)
 	{
 		Shader->Bind();
 		Shader->UploadUniformMat4("u_ViewProjection", m_SceneData->ViewProjecttionMatrix);

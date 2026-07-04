@@ -10,11 +10,14 @@ namespace DogEngine {
 		inline static void Clear() {
 			s_RendererAPI->Clear();
 		}
-		inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) {
+		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray) {
 			s_RendererAPI->DrawIndexed(vertexArray);
 		}
+		inline static void Init() {
+			s_RendererAPI->Init();
+		}
 	private:
-		static RendererAPI* s_RendererAPI;
+		static Scope<RendererAPI> s_RendererAPI;
 	};
 
 }

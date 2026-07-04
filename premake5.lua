@@ -16,6 +16,7 @@ IncludeDir["GLFW"] = "DogEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "DogEngine/vendor/glad/include"
 IncludeDir["ImGui"] = "DogEngine/vendor/imgui"
 IncludeDir["glm"] = "DogEngine/vendor/glm"
+IncludeDir["stb"] = "DogEngine/vendor/stb_image"
 
 
 
@@ -41,6 +42,7 @@ project "DogEngine"
         "src/DogEngine/**.h",
         "src/DogEngine/**.cpp",
         "%{prj.name}/vendor/glad/src/glad.c",
+        "%{prj.name}/vendor/stb_image/stb_image_impl.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
     }
@@ -52,7 +54,8 @@ project "DogEngine"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.stb}"
     }
 
     links{
@@ -81,7 +84,7 @@ project "DogEngine"
         enablepch "Off"
 
     filter "configurations:Debug"
-        defines "GE_DEBUG"
+        defines { "GE_DEBUG", "GE_ENABLE_PROFILING" }
         runtime "Debug"
         symbols "on"
 

@@ -37,7 +37,7 @@ namespace DogEngine {
 		glBindVertexArray(0);
 
 	}
-	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
+	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer)
 	{
 		glBindVertexArray(m_RendererID); 
 		vertexBuffer->Bind();
@@ -52,7 +52,7 @@ namespace DogEngine {
 		m_VertexBuffers.push_back(vertexBuffer);
 		
 	}
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
+	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer)
 	{
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gepch.h"
+#include "DogEngine/Core.h"
 
 namespace DogEngine {
 
@@ -55,6 +56,7 @@ namespace DogEngine {
 			case ShaderDataType::Bool: return 1;
 			}
 			GE_CORE_ASSERT(false, "Unknown ShaderDataType");
+			return 0;
 		}
 	};
 	
@@ -92,7 +94,7 @@ namespace DogEngine {
 	public:										
 		virtual ~VertexBuffer() {}
 
-		virtual void SetData() = 0;
+		virtual void SetData(uint32_t size, const void* data) = 0;
 
 		virtual void Bind() const= 0;
 		virtual void UnBind() const = 0;
@@ -100,7 +102,7 @@ namespace DogEngine {
 		virtual const BufferLayout& GetLayout() const = 0;
 		virtual void SetLayout(const BufferLayout& layout)  = 0;
 
-		static VertexBuffer* Create(float* vertices, uint32_t size);
+		static Ref<VertexBuffer> Create(float* vertices, uint32_t size);
 
 	};
 	class IndexBuffer {
@@ -111,6 +113,6 @@ namespace DogEngine {
 		virtual void Bind() const = 0;
 		virtual void UnBind() const = 0;
 		virtual uint32_t GetCount() const = 0;
-		static IndexBuffer* Create(uint32_t* incdices, uint32_t size);
+		static Ref<IndexBuffer> Create(uint32_t* indices, uint32_t size);
 	};
 }

@@ -1,29 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\DogEngine">
-      <UniqueIdentifier>{CC0F9AAB-38D0-15E2-010B-5F5F6D8A5ABE}</UniqueIdentifier>
+      <UniqueIdentifier>{0C731335-7833-8F6B-416E-D8E8ADEDD347}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\DogEngine\Debug">
+      <UniqueIdentifier>{829602EF-EEF7-DFFC-7765-26AFE3C516BC}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\DogEngine\Events">
-      <UniqueIdentifier>{307EBE45-1C0D-480F-C52B-5C0AB19958B5}</UniqueIdentifier>
+      <UniqueIdentifier>{70B9DFD2-5C48-699C-0567-7D97F1D47942}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\DogEngine\ImGui">
-      <UniqueIdentifier>{F62D1AEB-628F-F7F8-EBFC-3DAB575D2EB8}</UniqueIdentifier>
+      <UniqueIdentifier>{360161EF-A262-3EFD-2BD0-84AF973075BC}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\DogEngine\Platform">
-      <UniqueIdentifier>{A0D174CB-8CCB-9D1D-7538-342E61D1038A}</UniqueIdentifier>
+      <UniqueIdentifier>{E0DCD125-CCD6-FA77-B543-9188A1DC60E4}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\DogEngine\Platform\OpenGL">
-      <UniqueIdentifier>{D466412B-407F-2855-092C-B8EE7503BDEE}</UniqueIdentifier>
+      <UniqueIdentifier>{144A997F-8062-80A9-490F-1043B5E61443}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\DogEngine\Platform\Windows">
-      <UniqueIdentifier>{DA1B8AEB-C641-5452-AF87-D91D9B4C791E}</UniqueIdentifier>
+      <UniqueIdentifier>{1A67DECA-068D-A831-EFD2-2DFDDB97CDFD}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\DogEngine\Renderer">
-      <UniqueIdentifier>{F2D851A6-DED2-7AF8-C73F-1109B3D8E064}</UniqueIdentifier>
+      <UniqueIdentifier>{32E4AE00-1EDE-D752-074B-6E63F3E33DBF}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -52,6 +55,9 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\DogEngine.h">
@@ -62,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="..\src\DogEngine\Core.h">
       <Filter>src\DogEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Debug\Instrumentor.h">
+      <Filter>src\DogEngine\Debug</Filter>
     </ClInclude>
     <ClInclude Include="..\src\DogEngine\EntryPoint.h">
       <Filter>src\DogEngine</Filter>
@@ -108,6 +117,12 @@
     <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\DogEngine\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\DogEngine\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\DogEngine\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\DogEngine\Platform\OpenGL</Filter>
     </ClInclude>
@@ -123,7 +138,13 @@
     <ClInclude Include="..\src\DogEngine\Renderer\GraphicsContext.h">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Renderer\Material.h">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\DogEngine\Renderer\OrthoCamera.h">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Renderer\OrthographicCameraController.h">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\src\DogEngine\Renderer\RenderCommand.h">
@@ -132,7 +153,22 @@
     <ClInclude Include="..\src\DogEngine\Renderer\Renderer.h">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Renderer\Renderer2D.h">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\DogEngine\Renderer\RendererAPI.h">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Renderer\ShaderLibrary.h">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Renderer\Texture.h">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Renderer\Timestep.h">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Renderer\Transform.h">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\src\DogEngine\Renderer\VertexArray.h">
@@ -1433,6 +1469,12 @@
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>src\DogEngine\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\DogEngine\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\DogEngine\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\DogEngine\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1448,13 +1490,25 @@
     <ClCompile Include="..\src\DogEngine\Renderer\OrthoCamera.cpp">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Renderer\OrthographicCameraController.cpp">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\DogEngine\Renderer\RenderCommand.cpp">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\src\DogEngine\Renderer\Renderer.cpp">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Renderer\Renderer2D.cpp">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\DogEngine\Renderer\RendererAPI.cpp">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Renderer\ShaderLibrary.cpp">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Renderer\Texture.cpp">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\src\DogEngine\Renderer\VertexArray.cpp">
@@ -1468,6 +1522,9 @@
     </ClCompile>
     <ClCompile Include="vendor\glad\src\glad.c">
       <Filter>vendor\glad\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image_impl.cpp">
+      <Filter>vendor\stb_image</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

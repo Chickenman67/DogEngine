@@ -23,14 +23,14 @@ namespace DogEngine {
 		void Run();
 
 		void OnEvent(Event& e);
-		void PushLayer(Layer* layer);
-		void PushOverLay(Layer* layer);
+		void PushLayer(Scope<Layer> layer);
+		void PushOverLay(Scope<Layer> layer);
 
 		static inline Application& Get() { return *s_Instance; }
 		inline Window& GetWindow() { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-		std::unique_ptr<Window> m_Window;
+		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;

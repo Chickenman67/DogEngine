@@ -1,7 +1,7 @@
 #pragma once
 #include "RenderCommand.h"
 #include "OrthoCamera.h"
-#include "shader.h"
+#include "DogEngine/Renderer/Shader.h"
 namespace DogEngine {
 	
 	class Renderer{
@@ -9,7 +9,7 @@ namespace DogEngine {
 	public:
 		static void BeginScene(const OrthoCamera& camera);
 		static void EndScene();
-		static void Submit(const std::shared_ptr<VertexArray>& vertexArray, const std::shared_ptr<shader>& Shader);
+		static void Submit(const Ref<VertexArray>& vertexArray, const Ref<Shader>& shader);
 		static inline RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 	private:
 		struct SceneData{

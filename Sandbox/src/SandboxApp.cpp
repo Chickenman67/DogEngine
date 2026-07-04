@@ -1,201 +1,85 @@
 #include "gepch.h"
 #include "DogEngine.h"
 #include "imgui/imgui.h"
-#include "DogEngine/Events/KeyEvent.h"
-#include "DogEngine/Events/ApplicationEvent.h"
 
+#include "DogEngine/Renderer/Renderer2D.h"
+#include "DogEngine/Renderer/OrthographicCameraController.h"
+#include "DogEngine/Renderer/Texture.h"
+#include "DogEngine/Debug/Instrumentor.h"
 
-class ExampleLayer : public DogEngine::Layer {
+class Sandbox2DLayer : public DogEngine::Layer {
 public:
-	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, .9f, -.9f), m_CameraPosition(0.0f)
-	{
-		m_VertexArray.reset(DogEngine::VertexArray::Create());
+	Sandbox2DLayer()
+		: Layer("Sandbox2D"), m_CameraController(1280.0f / 720.0f) {
 
-
-		float vertices[3 * 7] = {
-			-.5f,-.5f,0.0f, 1.0f,0.0f,0.0f,1.0f,
-			.5f,-.5f,.0f,  0.0f,1.0f,0.0f,1.0f,
-			.0f,.5f,.0f,   0.0f,0.0f,1.0f,1.0f
-		};
-		std::shared_ptr<DogEngine::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(DogEngine::VertexBuffer::Create(vertices, sizeof(vertices)));
-
-		DogEngine::BufferLayout layout = {
-			{"a_Position", DogEngine::ShaderDataType::Float3},
-			{"a_Color", DogEngine::ShaderDataType::Float4},
-
-		};
-		vertexBuffer->SetLayout(layout);
-
-
-
-		m_VertexArray->AddVertexBuffer(vertexBuffer);
-
-
-
-		std::shared_ptr<DogEngine::IndexBuffer> indexBuffer;
-
-		unsigned int indices[3] = { 0, 1, 2 };
-		indexBuffer.reset(DogEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-
-		m_VertexArray->SetIndexBuffer(indexBuffer);
-
-		m_SquareVA.reset(DogEngine::VertexArray::Create());
-		float sqrvertices[3 * 4] = {
-			-.75f,-.75f,0.0f,
-			 .75f,-.75f,.0f,
-			 .75f, .75f,.0f,
-			-.75f, .75f,.0f
-		};
-		std::shared_ptr<DogEngine::VertexBuffer> squareVB;
-		squareVB.reset(DogEngine::VertexBuffer::Create(sqrvertices, sizeof(sqrvertices)));
-
-
-
-		squareVB->SetLayout({
-			{"a_Position", DogEngine::ShaderDataType::Float3}
-
-
-			});
-		m_SquareVA->AddVertexBuffer(squareVB);
-
-		unsigned int sqrindices[6] = { 0, 1, 2 ,2,3,0 };
-		std::shared_ptr<DogEngine::IndexBuffer> squareIB;
-		squareIB.reset(DogEngine::IndexBuffer::Create(sqrindices, sizeof(sqrindices) / sizeof(uint32_t)));
-
-		m_SquareVA->SetIndexBuffer(squareIB);
-
-		std::string vertexSrc = R"(
-			#version 330 core
-			layout(location=0) in vec3 a_Position;
-			layout(location=1) in vec4 a_Color;
-			uniform mat4 u_ViewProjection;
-			out vec4 v_Color;
-
-			void main(){
-				v_Color = a_Color;
-			gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
-			}
-)";
-		std::string fragmentSrc = R"(
-			#version 330 core
-			layout(location=0) out vec4 color;
-			in vec4 v_Color;
-
-			void main(){
-				color = v_Color;
-			
-})";
-		m_Shader.reset(new DogEngine::shader(vertexSrc, fragmentSrc));
-
-
-		std::string blueShaderVertexSrc = R"(
-			#version 330 core
-			layout(location=0) in vec3 a_Position;
-uniform mat4 u_ViewProjection;
-			out vec3 v_Position;
-
-			void main(){
-				v_Position = a_Position;
-				gl_Position = u_ViewProjection*vec4(a_Position, 1.0);
-			}
-)";
-		std::string blueShaderFragmentSrc = R"(
-			#version 330 core
-			layout(location=0) out vec4 color;
-
-			in vec3 v_Position;
-
-			void main(){
-				color = vec4(0.2,.3,.8,1.0);
-			
-})";
-		m_BlueShader.reset(new DogEngine::shader(blueShaderVertexSrc, blueShaderFragmentSrc));
+		DogEngine::Renderer2D::Init();
 	}
 
-	void OnUpdate() override {
+	void OnUpdate(DogEngine::Timestep ts) override {
+		PROFILE_FUNCTION();
 
-		if (DogEngine::Input::IsKeyPressed(GE_KEY_LEFT)) {
-			m_CameraPosition.x -= m_CameraMoveSpeed;
-		}
-		else if (DogEngine::Input::IsKeyPressed(GE_KEY_RIGHT)) {
-			m_CameraPosition.x += m_CameraMoveSpeed;
-		}
-		if (DogEngine::Input::IsKeyPressed(GE_KEY_UP)) {
-			m_CameraPosition.y += m_CameraMoveSpeed;
-		}
-		else if (DogEngine::Input::IsKeyPressed(GE_KEY_DOWN)) {
-			m_CameraPosition.y -= m_CameraMoveSpeed;
-		}
-		if (DogEngine::Input::IsKeyPressed(GE_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed;
-		if (DogEngine::Input::IsKeyPressed(GE_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed;
+		m_CameraController.OnUpdate(ts);
 
-		DogEngine::RenderCommand::SetClearColor({ .1f, .1f, .1f, 1 });
+		DogEngine::Renderer2D::ResetStats();
+
+		DogEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		DogEngine::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
+		DogEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-		DogEngine::Renderer::BeginScene(m_Camera);
+		// Draw colored quads
+		DogEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
+		DogEngine::Renderer2D::DrawQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.2f, 0.3f, 0.8f, 1.0f });
 
+		// Draw rotated colored quad
+		DogEngine::Renderer2D::DrawRotatedQuad({ 0.0f, -1.0f }, { 0.8f, 0.8f }, 45.0f, { 0.2f, 0.8f, 0.3f, 1.0f });
 
-		DogEngine::Renderer::Submit(m_SquareVA, m_BlueShader);
-		DogEngine::Renderer::Submit(m_VertexArray, m_Shader);
-		DogEngine::Renderer::EndScene();
-}
+		// Draw textured quads (using white texture tinted = colored quad through single shader path)
+		DogEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f, 0.0f, 0.5f });
+		DogEngine::Renderer2D::DrawRotatedQuad({ 0.0f, 1.5f }, { 1.2f, 0.8f }, 30.0f, { 1.0f, 0.5f, 0.0f, 0.8f });
+
+		// Draw many quads to exercise batching
+		for (float x = -5.0f; x < 5.0f; x += 1.1f) {
+			for (float y = -5.0f; y < 5.0f; y += 1.1f) {
+				glm::vec4 color = { (x + 5.0f) / 10.0f, (y + 5.0f) / 10.0f, 0.5f, 0.7f };
+				DogEngine::Renderer2D::DrawQuad({ x, y }, { 0.9f, 0.9f }, color);
+			}
+		}
+
+		DogEngine::Renderer2D::EndScene();
+	}
 
 	virtual void OnImGuiRender() override {
-		
+		auto stats = DogEngine::Renderer2D::GetStats();
+		ImGui::Begin("Renderer2D Stats");
+		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
+		ImGui::Text("Quad Count: %d", stats.QuadCount);
+		ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+		ImGui::End();
+
+		ImGui::Begin("Controls");
+		ImGui::Text("WASD - Move camera");
+		ImGui::Text("Scroll - Zoom in/out");
+		ImGui::Text("F11 - Toggle fullscreen");
+		ImGui::End();
 	}
-	
+
 	void OnEvent(DogEngine::Event& event) override {
-		DogEngine::EventDispatcher dispatcher(event);
-		dispatcher.Dispatch<DogEngine::KeyPressedEvent>([](DogEngine::KeyPressedEvent& e) {
-			if (e.GetKeyCode() == GE_KEY_F11) {
-				auto& window = DogEngine::Application::Get().GetWindow();
-				window.SetFullscreen(!window.IsFullscreen());
-				return true;
-			}
-			return false;
-			});
-		dispatcher.Dispatch<DogEngine::WindowResizeEvent>([this](DogEngine::WindowResizeEvent& e) {
-			float aspect = (float)e.GetWidth() / (float)e.GetHeight();
-			float orthoSize = 1.0f;
-			if (aspect > 1.0f)
-				m_Camera.SetProjection(-orthoSize * aspect, orthoSize * aspect, orthoSize, -orthoSize);
-			else
-				m_Camera.SetProjection(-orthoSize, orthoSize, orthoSize / aspect, -orthoSize / aspect);
-			return false;
-			});
+		m_CameraController.OnEvent(event);
 	}
-	
-	private:
-		std::shared_ptr<DogEngine::shader> m_Shader;
-		std::shared_ptr<DogEngine::VertexArray> m_VertexArray;
 
-		std::shared_ptr<DogEngine::shader> m_BlueShader;
-		std::shared_ptr<DogEngine::VertexArray> m_SquareVA;
-
-		DogEngine::OrthoCamera m_Camera;
-		glm::vec3 m_CameraPosition;
-		float m_CameraMoveSpeed = 0.1f;
-		float m_CameraRotation = 0.0f;
-		float m_CameraRotationSpeed = 2.1f;
+private:
+	DogEngine::OrthographicCameraController m_CameraController;
 };
 
 class Sandbox : public DogEngine::Application {
 public:
 	Sandbox() {
-		PushLayer(new ExampleLayer());
+		PushLayer(DogEngine::CreateScope<Sandbox2DLayer>());
 	}
-	~Sandbox() {
-
-	}
+	~Sandbox() = default;
 };
-
 
 DogEngine::Application* DogEngine::CreateApplication() {
 	return new Sandbox();
