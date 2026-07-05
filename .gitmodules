@@ -4,9 +4,25 @@
 [submodule "DogEngine/vendor/GLFW"]
 	path = DogEngine/vendor/GLFW
 	url = https://github.com/Chickenman67/glfw
-[submodule "DogEngine/vendor/imgui"]
-	path = DogEngine/vendor/imgui
-	url = https://github.com/Chickenman67/imgui
 [submodule "DogEngine/vendor/glm"]
 	path = DogEngine/vendor/glm
 	url = https://github.com/g-truc/glm
+[submodule "DogEngine/vendor/entt"]
+	path = DogEngine/vendor/entt
+	url = https://github.com/skypjack/entt
+[submodule "DogEngine/vendor/ImGuizmo"]
+	path = DogEngine/vendor/ImGuizmo
+	url = https://github.com/CedricGuillemet/ImGuizmo
+[submodule "DogEngine/vendor/yaml-cpp"]
+	path = DogEngine/vendor/yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp
+[submodule "DogEngine/vendor/box2d"]
+	path = DogEngine/vendor/box2d
+	url = https://github.com/erincatto/box2d
+[submodule "DogEngine/vendor/filewatch"]
+	path = DogEngine/vendor/filewatch
+	url = https://github.com/ThomasMonkman/filewatch
+[submodule "DogEngine/vendor/imgui"]
+	path = DogEngine/vendor/imgui
+	url = https://github.com/ocornut/imgui
+	branch = docking

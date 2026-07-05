@@ -17,8 +17,11 @@ IncludeDir["Glad"] = "DogEngine/vendor/glad/include"
 IncludeDir["ImGui"] = "DogEngine/vendor/imgui"
 IncludeDir["glm"] = "DogEngine/vendor/glm"
 IncludeDir["stb"] = "DogEngine/vendor/stb_image"
-
-
+IncludeDir["entt"] = "DogEngine/vendor/entt/src"
+IncludeDir["ImGuizmo"] = "DogEngine/vendor/ImGuizmo"
+IncludeDir["yaml"] = "DogEngine/vendor/yaml-cpp/include"
+IncludeDir["box2d"] = "DogEngine/vendor/box2d/include"
+IncludeDir["filewatch"] = "DogEngine/vendor/filewatch"
 
 include "DogEngine/vendor/GLFW"
 include "DogEngine/vendor/glad" 
@@ -28,7 +31,7 @@ project "DogEngine"
     location "DogEngine"
     kind "StaticLib"
     language "C++"
-    cppdialect "C++17"
+    cppdialect "C++20"
     staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -43,6 +46,9 @@ project "DogEngine"
         "src/DogEngine/**.cpp",
         "%{prj.name}/vendor/glad/src/glad.c",
         "%{prj.name}/vendor/stb_image/stb_image_impl.cpp",
+        "%{prj.name}/vendor/ImGuizmo/src/ImGuizmo.cpp",
+        "%{prj.name}/vendor/ImGuizmo/src/ImGuizmo.h",
+        "%{prj.name}/vendor/yaml-cpp/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
     }
@@ -55,7 +61,12 @@ project "DogEngine"
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
         "%{IncludeDir.glm}",
-        "%{IncludeDir.stb}"
+        "%{IncludeDir.stb}",
+        "%{IncludeDir.entt}",
+        "%{IncludeDir.ImGuizmo}",
+        "%{IncludeDir.yaml}",
+        "%{IncludeDir.box2d}",
+        "%{IncludeDir.filewatch}"
     }
 
     links{
@@ -78,10 +89,18 @@ project "DogEngine"
 
         buildoptions { "/utf-8" }
 
-        
-
     filter "files:**/glad.c"
         enablepch "Off"
+
+    filter "files:**/ImGuizmo.cpp"
+        enablepch "Off"
+
+    filter "files:**/stb_image_impl.cpp"
+        enablepch "Off"
+
+    filter "files:**/yaml-cpp/src/**.cpp"
+        enablepch "Off"
+        defines { "YAML_CPP_STATIC_DEFINE" }
 
     filter "configurations:Debug"
         defines { "GE_DEBUG", "GE_ENABLE_PROFILING" }
@@ -102,7 +121,7 @@ project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
-    cppdialect "C++17"
+    cppdialect "C++20"
     staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -119,7 +138,11 @@ project "Sandbox"
         "src",
         "DogEngine/vendor/spdlog/include",
         "DogEngine/vendor",
-        "%{IncludeDir.glm}" 
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.entt}",
+        "%{IncludeDir.ImGuizmo}",
+        "%{IncludeDir.yaml}",
+        "%{IncludeDir.box2d}"
     }
 
     links

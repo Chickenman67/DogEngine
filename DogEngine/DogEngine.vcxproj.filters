@@ -28,8 +28,17 @@
     <Filter Include="src\DogEngine\Renderer">
       <UniqueIdentifier>{32E4AE00-1EDE-D752-074B-6E63F3E33DBF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\DogEngine\Scene">
+      <UniqueIdentifier>{29F910F0-955A-EEFD-1EC8-34B08A2825BD}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\ImGuizmo">
+      <UniqueIdentifier>{73BF7F4C-DF4A-ED10-E85B-700554664911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\ImGuizmo\src">
+      <UniqueIdentifier>{0AFF83FC-7660-610A-FFCD-A7BC6B2E98C9}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor\glad">
       <UniqueIdentifier>{9A8E79C1-0644-F2B6-8F38-EC8DFBECE8BA}</UniqueIdentifier>
@@ -57,6 +66,15 @@
     </Filter>
     <Filter Include="vendor\stb_image">
       <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\yaml-cpp">
+      <UniqueIdentifier>{C5B3FC54-313F-6A19-3A50-ED0DA65AC619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\yaml-cpp\src">
+      <UniqueIdentifier>{5CCC2628-C82D-0436-519B-4AE8BDFB3AF5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\yaml-cpp\src\contrib">
+      <UniqueIdentifier>{5CB0BB24-C8BD-E90A-51A4-E5F5BDB0B5C1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +132,9 @@
     <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\DogEngine\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLFramebuffer.h">
+      <Filter>src\DogEngine\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\DogEngine\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\DogEngine\Platform\OpenGL</Filter>
     </ClInclude>
@@ -133,6 +154,9 @@
       <Filter>src\DogEngine\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="..\src\DogEngine\Renderer\Buffer.h">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Renderer\Framebuffer.h">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\src\DogEngine\Renderer\GraphicsContext.h">
@@ -159,6 +183,9 @@
     <ClInclude Include="..\src\DogEngine\Renderer\RendererAPI.h">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Renderer\Shader.h">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\DogEngine\Renderer\ShaderLibrary.h">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClInclude>
@@ -174,14 +201,29 @@
     <ClInclude Include="..\src\DogEngine\Renderer\VertexArray.h">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\DogEngine\Renderer\shader.h">
-      <Filter>src\DogEngine\Renderer</Filter>
+    <ClInclude Include="..\src\DogEngine\Scene\Component.h">
+      <Filter>src\DogEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Scene\Entity.h">
+      <Filter>src\DogEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Scene\Scene.h">
+      <Filter>src\DogEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Scene\SceneSerializer.h">
+      <Filter>src\DogEngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DogEngine\Scene\UUID.h">
+      <Filter>src\DogEngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\src\DogEngine\Window.h">
       <Filter>src\DogEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\src\gepch.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\ImGuizmo\src\ImGuizmo.h">
+      <Filter>vendor\ImGuizmo\src</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\common.hpp">
       <Filter>vendor\glm\glm</Filter>
@@ -1487,6 +1529,9 @@
     <ClCompile Include="..\src\DogEngine\Renderer\Buffer.cpp">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Renderer\Framebuffer.cpp">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\DogEngine\Renderer\OrthoCamera.cpp">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClCompile>
@@ -1505,6 +1550,9 @@
     <ClCompile Include="..\src\DogEngine\Renderer\RendererAPI.cpp">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Renderer\Shader.cpp">
+      <Filter>src\DogEngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\DogEngine\Renderer\ShaderLibrary.cpp">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClCompile>
@@ -1514,17 +1562,122 @@
     <ClCompile Include="..\src\DogEngine\Renderer\VertexArray.cpp">
       <Filter>src\DogEngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\DogEngine\Renderer\shader.cpp">
-      <Filter>src\DogEngine\Renderer</Filter>
+    <ClCompile Include="..\src\DogEngine\Scene\Entity.cpp">
+      <Filter>src\DogEngine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Scene\Scene.cpp">
+      <Filter>src\DogEngine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Scene\UUID.cpp">
+      <Filter>src\DogEngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\src\gepch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\ImGuizmo\src\ImGuizmo.cpp">
+      <Filter>vendor\ImGuizmo\src</Filter>
     </ClCompile>
     <ClCompile Include="vendor\glad\src\glad.c">
       <Filter>vendor\glad\src</Filter>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image_impl.cpp">
       <Filter>vendor\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\binary.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\contrib\graphbuilder.cpp">
+      <Filter>vendor\yaml-cpp\src\contrib</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\contrib\graphbuilderadapter.cpp">
+      <Filter>vendor\yaml-cpp\src\contrib</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\convert.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\depthguard.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\directives.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\emit.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\emitfromevents.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\emitter.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\emitterstate.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\emitterutils.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\exceptions.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\exp.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\fptostring.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\memory.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\node.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\node_data.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\nodebuilder.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\nodeevents.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\null.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\ostream_wrapper.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\parse.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\parser.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\regex_yaml.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\scanner.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\scanscalar.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\scantag.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\scantoken.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\simplekey.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\singledocparser.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\stream.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\yaml-cpp\src\tag.cpp">
+      <Filter>vendor\yaml-cpp\src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
