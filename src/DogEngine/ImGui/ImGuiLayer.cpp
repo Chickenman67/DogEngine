@@ -1,6 +1,7 @@
 #include "gepch.h"
 #include "ImGuiLayer.h"
 #include "imgui.h"
+#include "imgui_internal.h"
 #include "backends/imgui_impl_opengl3.h"	
 #include "backends/imgui_impl_glfw.h"
 #include "DogEngine/Application.h"
@@ -9,6 +10,33 @@
 #include <glad/glad.h>
 
 namespace DogEngine{
+
+	static void SetDefaultDockLayout(ImGuiID dockspace_id) {
+		// Only apply default layout the first frame
+		static bool layoutDone = false;
+		if (layoutDone) return;
+
+		ImGui::DockBuilderRemoveNode(dockspace_id);
+		ImGui::DockBuilderAddNode(dockspace_id, ImGuiDockNodeFlags_DockSpace);
+		ImGui::DockBuilderSetNodeSize(dockspace_id, ImGui::GetMainViewport()->Size);
+
+		// Split into left (viewport) and right (panels)
+		ImGuiID dockRight;
+		ImGuiID dockMain = ImGui::DockBuilderSplitNode(dockspace_id, ImGuiDir_Right, 0.22f, nullptr, &dockRight);
+
+		// Split right side into Stats (top) and Controls+About (bottom)
+		ImGuiID dockStats;
+		ImGuiID dockControls = ImGui::DockBuilderSplitNode(dockRight, ImGuiDir_Down, 0.55f, &dockStats, nullptr);
+
+		// Assign windows
+		ImGui::DockBuilderDockWindow("Viewport", dockMain);
+		ImGui::DockBuilderDockWindow("Renderer Stats", dockStats);
+		ImGui::DockBuilderDockWindow("Controls", dockControls);
+		ImGui::DockBuilderDockWindow("About DogEngine", dockControls);
+
+		ImGui::DockBuilderFinish(dockspace_id);
+		layoutDone = true;
+	}
 
 	ImGuiLayer::ImGuiLayer()
 		: Layer("ImGuiLayer") {
@@ -86,6 +114,9 @@ namespace DogEngine{
 		if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable) {
 			ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
 			ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
+
+			// Set default layout on first frame
+			SetDefaultDockLayout(dockspace_id);
 		}
 		style.WindowMinSize.x = minWinSizeX;
 
