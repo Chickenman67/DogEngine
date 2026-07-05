@@ -43,6 +43,14 @@ namespace DogEngine{
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
+
+		// When the viewport is focused, let keyboard/mouse events pass through
+		// to the camera controller instead of being captured by ImGui
+		if (m_BlockEvents) {
+			io.WantCaptureKeyboard = false;
+			io.WantCaptureMouse = false;
+		}
+
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}

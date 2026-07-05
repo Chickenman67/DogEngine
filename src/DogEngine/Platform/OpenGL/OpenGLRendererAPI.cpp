@@ -6,6 +6,7 @@ namespace DogEngine {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glEnable(GL_DEPTH_TEST);
+		glDepthFunc(GL_LEQUAL);  // Allow quads at same Z to draw over each other
 	}
 
 	void OpenGLRendererAPI::SetClearColor(const glm::vec4& color)

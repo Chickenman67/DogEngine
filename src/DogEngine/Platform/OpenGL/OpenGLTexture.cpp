@@ -62,4 +62,10 @@ namespace DogEngine {
 		glBindTextureUnit(slot, m_RendererID);
 	}
 
+	void OpenGLTexture2D::SetData(void* data, uint32_t size) {
+		uint32_t bpp = 4; // RGBA8
+		GE_CORE_ASSERT(size == m_Width * m_Height * bpp, "Data size must match texture size!");
+		glTextureSubImage2D(m_RendererID, 0, 0, 0, m_Width, m_Height, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	}
+
 }

@@ -4,7 +4,9 @@
 #include "Events/Event.h"
 #include "LayerStack.h"
 #include "Events/ApplicationEvent.h"
+#include "Events/KeyEvent.h"
 #include "Window.h"
+#include "KeyCodes.h"
 #include "DogEngine/ImGui/ImGuiLayer.h"
 
 
@@ -28,8 +30,10 @@ namespace DogEngine {
 
 		static inline Application& Get() { return *s_Instance; }
 		inline Window& GetWindow() { return *m_Window; }
+		inline ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnKeyPressed(KeyPressedEvent& e);
 		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;

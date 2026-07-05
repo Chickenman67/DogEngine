@@ -630,6 +630,7 @@
     <ClCompile Include="..\src\DogEngine\Log.cpp" />
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLFramebuffer.cpp" />
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLTexture.cpp" />

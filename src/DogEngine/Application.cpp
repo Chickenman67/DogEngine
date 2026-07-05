@@ -43,6 +43,7 @@ namespace DogEngine {
 	void Application::OnEvent(Event& e) {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<KeyPressedEvent>(BIND_EVENT_FN(Application::OnKeyPressed));
 		GE_CORE_TRACE("{0}", e);
 
 		for (auto it = m_LayerStack.end();it != m_LayerStack.begin();) {
@@ -85,5 +86,14 @@ namespace DogEngine {
 	bool Application::OnWindowClose(WindowCloseEvent& e) {
 		m_Running = false;
 		return true;
+	}
+
+	bool Application::OnKeyPressed(KeyPressedEvent& e) {
+		if (e.GetKeyCode() == GE_KEY_F11 && e.GetRepeatCount() == 0) {
+			bool fullscreen = !m_Window->IsFullscreen();
+			m_Window->SetFullscreen(fullscreen);
+			return true;
+		}
+		return false;
 	}
 }

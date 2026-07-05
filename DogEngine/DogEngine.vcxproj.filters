@@ -1508,6 +1508,9 @@
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\DogEngine\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLFramebuffer.cpp">
+      <Filter>src\DogEngine\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\DogEngine\Platform\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>src\DogEngine\Platform\OpenGL</Filter>
     </ClCompile>
